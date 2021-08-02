@@ -21,6 +21,16 @@ interface CreateRelatedParams extends CreateParams {
 }
 
 
+const filterBuilder = (filterName, filterValue) => {
+  const [filterResource, filterOperation, valueType] = filterName.split("_");
+  if (valueType === "str") filterValue = `'${filterValue}'`; //if filtering on a String field, make sure it has single quotes around value
+  if (filterOperation) {
+    //if the filter operation exists, build filter query
+    return `${filterResource} ${filterOperation} ${filterValue}`;
+  } //if filter operation doesn't exist, default to Contains() method
+  else return `Contains(${filterName},'${filterValue}')`;
+};
+
 async function get_entities(url: string, options?: RequestInit) {
   const m = await window.fetch(url + "/$metadata", options);
   const t = await m.text();
@@ -37,6 +47,7 @@ const ra_data_odata_server = async (
   option_callback: (() => Promise<RequestInit>) = () => Promise.resolve({})
 ): Promise<OdataDataProvider> => {
   const resources = await get_entities(apiUrl, await option_callback());
+  console.log("Ejecutado")
   const id_map: Record<string, string> = {};
   for (const r in resources) {
     const id_name = resources[r]?.Key?.Name ?? "id";
@@ -100,7 +111,8 @@ const ra_data_odata_server = async (
 
         for (const filterName in params.filter) {
           o = o.filter(
-            `Contains(${filterName},'${params.filter[filterName]}')`
+            filterBuilder(filterName, params.filter[filterName])
+            //`Contains(${filterName},'${params.filter[filterName]}')`
           );
         }
 
