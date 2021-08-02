@@ -23,7 +23,7 @@ interface CreateRelatedParams extends CreateParams {
 
 const filterBuilder = (filterName : string, filterValue : any) => {
   console.log("filterName:" + filterName);
-  console.log("filterValue:" + filterValue)
+  console.log("filterValue:" + filterValue);
   const [filterResource, filterOperation, valueType] = filterName.split("_");
   if (valueType === "str") filterValue = `'${filterValue}'`; //if filtering on a String field, make sure it has single quotes around value
   if (filterOperation) {
