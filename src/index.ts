@@ -22,9 +22,11 @@ interface CreateRelatedParams extends CreateParams {
 
 
 const filterBuilder = (filterName : string, filterValue : any) => {
+  /*
   console.log("filterName:" + filterName);
   console.log("filterValue:" + filterValue);
   console.log("filterValue Type:" + typeof (filterValue));
+  */
   if(typeof (filterValue) === "string"){
     return `Contains(${filterName},'${filterValue}')`;
   }else{
