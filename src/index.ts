@@ -21,7 +21,7 @@ interface CreateRelatedParams extends CreateParams {
 }
 
 
-const filterBuilder = (filterName, filterValue) => {
+const filterBuilder = (filterName : string, filterValue : any) => {
   const [filterResource, filterOperation, valueType] = filterName.split("_");
   if (valueType === "str") filterValue = `'${filterValue}'`; //if filtering on a String field, make sure it has single quotes around value
   if (filterOperation) {
