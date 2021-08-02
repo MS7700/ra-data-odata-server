@@ -1,6 +1,6 @@
 {
   "name": "@ms7700/ra-data-odata-server-forked",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "OData Server data provider for react-admin",
   "repository": {
     "type": "git",
