@@ -25,6 +25,12 @@ const filterBuilder = (filterName : string, filterValue : any) => {
   console.log("filterName:" + filterName);
   console.log("filterValue:" + filterValue);
   console.log("filterValue Type:" + typeof (filterValue));
+  if(typeof (filterValue) === "string"){
+    return `Contains(${filterName},'${filterValue}')`;
+  }else{
+    return `${filterName} eq ${filterValue}`;
+  }
+  /*
   const [filterResource, filterOperation, valueType] = filterName.split("_");
   if (valueType === "str") filterValue = `'${filterValue}'`; //if filtering on a String field, make sure it has single quotes around value
   if (filterOperation) {
@@ -32,6 +38,7 @@ const filterBuilder = (filterName : string, filterValue : any) => {
     return `${filterResource} ${filterOperation} ${filterValue}`;
   } //if filter operation doesn't exist, default to Contains() method
   else return `Contains(${filterName},'${filterValue}')`;
+  */
 };
 
 async function get_entities(url: string, options?: RequestInit) {
