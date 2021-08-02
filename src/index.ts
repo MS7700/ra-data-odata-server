@@ -47,7 +47,6 @@ const ra_data_odata_server = async (
   option_callback: (() => Promise<RequestInit>) = () => Promise.resolve({})
 ): Promise<OdataDataProvider> => {
   const resources = await get_entities(apiUrl, await option_callback());
-  console.log("Ejecutado")
   const id_map: Record<string, string> = {};
   for (const r in resources) {
     const id_name = resources[r]?.Key?.Name ?? "id";
