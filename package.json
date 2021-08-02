@@ -1,8 +1,11 @@
 {
-  "name": "ra-data-odata-server",
+  "name": "@ms7700/ra-data-odata-server-forked",
   "version": "2.1.0",
   "description": "OData Server data provider for react-admin",
-  "repository": "https://github.com/Groopit/ra-data-odata-server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MS7700/ra-data-odata-server.git"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -33,5 +36,13 @@
   "dependencies": {
     "fast-xml-parser": "^3.19.0",
     "odata-client": "^0.6.14"
+  },
+  "bugs": {
+    "url": "https://github.com/MS7700/ra-data-odata-server/issues"
+  },
+  "homepage": "https://github.com/MS7700/ra-data-odata-server#readme",
+  "directories": {
+    "example": "example",
+    "test": "test"
   }
 }
