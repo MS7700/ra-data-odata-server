@@ -26,12 +26,16 @@ const filterBuilder = (filterName: string, filterValue: any) => {
   console.log("filterValue:" + filterValue);
   console.log("filterValue Type:" + typeof (filterValue));
   */
+  console.log("filterName:" + filterName);
+  if (filterName === "Fecha") {
+    return `${filterName} eq datetime'${filterValue}'`;
+  } else
   if (filterName === "FechaInicial") {
     return `Fecha gt datetime'${filterValue}'`;
-  }
+  } else
   if (filterName === "FechaFinal") {
     return `Fecha lt datetime'${filterValue}'`;
-  }
+  } else
   if (typeof filterValue === "string") {
     return `Contains(${filterName},'${filterValue}')`;
   } else {
