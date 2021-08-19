@@ -28,13 +28,13 @@ const filterBuilder = (filterName: string, filterValue: any) => {
   */
   console.log("filterName:" + filterName);
   if (filterName === "Fecha") {
-    return `${filterName} eq ${filterValue}T00:00:00-04:00`;
+    return `${filterName} eq ${filterValue}T00:00:00.000Z`;
   } else
   if (filterName === "FechaInicial") {
-    return `Fecha ge ${filterValue}T00:00:00-04:00`;
+    return `Fecha ge ${filterValue}T00:00:00.000Z`;
   } else
   if (filterName === "FechaFinal") {
-    return `Fecha le ${filterValue}T00:00:00-04:00`;
+    return `Fecha le ${filterValue}T00:00:00.000Z`;
   } else
   if (typeof filterValue === "string") {
     return `Contains(${filterName},'${filterValue}')`;
